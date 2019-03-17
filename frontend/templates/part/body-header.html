@@ -1,0 +1,53 @@
+<div data-am-widget="tabs" class="am-tabs am-tabs-default">
+    <ul class="am-tabs-nav am-cf">
+        <li id="task" class="am-active"><a href="[data-tab-panel-0]">任务管理器</a></li>
+        <li id="resource" class=""><a href="[data-tab-panel-1]">资源管理器</a></li>
+    </ul>
+    <div class="am-tabs-bd am-tabs-bd-ofv">
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+
+          <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+            <ul class="am-tabs-nav am-cf">
+                <li name="process" class="am-active"><a href="[data-tab-panel-00]">进程监控</a></li>
+                <li name="network" class=""><a href="[data-tab-panel-01]">网络监控</a></li>
+                <li name="port" class=""><a href="[data-tab-panel-02]">端口监控</a></li>
+            </ul>
+            <div class="am-tabs-bd am-tabs-bd-ofv">
+                <div data-tab-panel-00 class="am-tab-panel am-active">
+                  {% include "part/part-list/body-list-process.html" ignore missing with context %}
+                </div>
+                <div data-tab-panel-01 class="am-tab-panel ">
+                  {% include "part/part-list/body-list-network.html" ignore missing with context %}
+                </div>
+                <div data-tab-panel-02 class="am-tab-panel ">
+                  {% include "part/part-list/body-list-port.html" ignore missing with context %}
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div data-tab-panel-1 class="am-tab-panel ">
+
+          <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+            <ul class="am-tabs-nav am-cf">
+                <li name="disk" class="am-active"><a href="[data-tab-panel-10]">资源管理</a></li>
+                <li name="consumption" class=""><a href="[data-tab-panel-11]">消耗监控</a></li>
+                <li name="information" class=""><a href="[data-tab-panel-12]">本机信息</a></li>
+            </ul>
+            <div class="am-tabs-bd am-tabs-bd-ofv">
+                <div data-tab-panel-10 class="am-tab-panel am-active">
+                    {% include "part/part-list/body-list-resource.html" ignore missing with context %}
+                </div>
+                <div data-tab-panel-11 class="am-tab-panel ">
+                    {% include "part/part-list/body-list-consumption.html" ignore missing with context %}
+                </div>
+                <div data-tab-panel-12 class="am-tab-panel ">
+                    {% include "part/part-list/body-list-information.html" ignore missing with context %}
+                </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+</div>

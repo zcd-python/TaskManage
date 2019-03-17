@@ -1,0 +1,14 @@
+linux控制台命令
+
+sudo -s
+
+apt-get update
+
+apt-get install python-pip htop -y
+
+pip install psdash
+
+
+psdash -p 9999 -b 0.0.0.0
+	第2行得到端口
+	本机IP:端口

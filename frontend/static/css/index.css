@@ -1,0 +1,102 @@
+div[data-tab-panel-10] > table {
+    
+}
+div[id="disk-data"]{
+    height: 2.5em;
+    
+}
+@media only screen and (min-width: 641px) {
+    .am-dropdown-toggle {
+        position: relative;
+        line-height: 50px;
+        padding: 0 10px;
+    }
+    .am-breadcrumb {
+        margin-bottom: 0;
+        display: inline-block;
+    }
+}
+.cpu{
+    width: 90px;
+    margin-left: 35px;
+    border: 0px solid blue;
+    float: left;
+    position: relative;
+    height: 210px;
+}
+.cpu_1{
+    float: left;
+    line-height: 58px;
+    border: 0px solid red;
+    color: blue;
+    font-size: 28px;
+}
+.cpu_2{
+    border: 0px solid red;
+    line-height: 58px;
+    margin-left: 15px;
+    font-size: 20px;
+    color: blue;
+    float: left;
+}
+.cpu_2_1{
+    line-height: 58px;
+    margin-left: 32px;
+    font-size: 20px;
+    color: blue;
+    float: left;
+
+}
+.div-cpu{
+    border: 1px dashed red;
+    width: 398px;
+    height: 240px;
+    float: left;
+    margin-left: 6px;
+}
+.div-right{
+    border: 1px dashed red;
+    width: 450px;
+    height: 240px;
+    float: left;
+    margin-left: 6px;
+}
+tr{
+    border: 0px solid red;
+}
+.tr-1{
+    border: 0px solid red;
+    height: 16px;
+}
+td{
+    border: 0px solid red;
+}
+.nei-spa{
+    margin-left: 100px;
+    font-family: 幼圆;
+    font-weight: bold;
+    font-size: 20px;
+}
+.nei-div{
+    margin-left: 20px;
+    font-weight: bold;
+}
+.nei-spa-only{
+    margin-left: 84px;
+    font-family: 幼圆;
+    font-weight: bold;
+    font-size: 20px;
+}
+.nei-spa-time{
+    margin-left: 20px;
+    font-family: 幼圆;
+    font-weight: bold;
+    font-size: 16px;
+}
+.div-max{
+    margin-top: 5px;
+    width: 100%;
+}
+.div-backcolor{
+    background-color: #FFE4E1;
+}

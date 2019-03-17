@@ -1,0 +1,27 @@
+<div class="path-line">
+    当前路径：
+    <ol class="am-breadcrumb">
+        <li><i class="am-icon-home"></i>计算机</li>
+    </ol>
+  		<div id="keyword" style="width: 20%; float: right; display: none;" class="am-input-group am-input-group-primary">
+	      <input id="keyword_ct" type="text" placeholder="关键字搜索" class="am-form-field">
+	      <span class="am-input-group-btn">
+	        <button id="keyword_bt" class="am-btn am-btn-primary" type="button"><span id="key_search" class="am-icon-search"></span></button>
+	      </span>
+	    </div>
+</div>
+<table style="display: none;" id="disk_data_thead" class="am-table-bordered am-table-compact am-table am-table-radius am-table-striped am-table-hover">
+	<thead>
+		<tr style="background-color: #030303; color: #ffffff;">
+			<th style="width: 40%;">文件名</th>
+			<th style="width: 10%;">类型</th>
+			<th style="width: 20%;">修改日期</th>
+			<th style="width: 20%;">大小</th>
+		</tr>
+	</thead>
+</table>
+<div class="am-scrollable-vertical" style="height: 25em;">
+	<table id="disk_data" class="am-table-bordered am-table-compact am-table am-table-radius am-table-striped am-table-hover">
+	    <tbody></tbody>
+	</table>
+</div>

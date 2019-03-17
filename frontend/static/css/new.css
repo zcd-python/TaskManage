@@ -1,0 +1,17 @@
+.am-dropdown-toggle {
+    position: relative;
+    display: block;
+    padding: .4em 1em;
+    border-radius: 0;
+}
+@media only screen and (min-width: 641px) {
+    .am-dropdown-toggle {
+        position: relative;
+        line-height: 50px;
+        padding: 0 10px;
+    }
+}
+.am-icon-bluetooth {
+    color: #fa1;
+    font-size: 5em;
+}

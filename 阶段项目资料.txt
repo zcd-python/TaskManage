@@ -1,0 +1,134 @@
+pusutil中文文档一：  https://www.cnblogs.com/jason007/p/6748057.html  
+pusutil中文文档二：  https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001511052957192bb91a56a2339485c8a8c79812b400d49000#0
+pusutil中文文档三：  https://www.cnblogs.com/saneri/p/7528283.html
+pusutil中文文档四：  https://psutil.readthedocs.io/en/latest/(CPU,记忆，磁盘，网络，传感器-温度，进程，还有Windows和Linux的psuitl比较)
+    
+
+--判断是Windows还是Linux系统
+    import platform
+    def UsePlatform():
+      sysstr = platform.system()
+      if(sysstr =="Windows"):
+        print ("Call Windows tasks")
+      elif(sysstr == "Linux"):
+        print ("Call Linux tasks")
+      else:
+        print ("Other System tasks")
+
+    UsePlatform()
+    
+--psutil.test()
+    能得到很多系统信息
+
+--获取网络使用率：
+    import psutil
+    import time
+    def __check_speeds():
+        rs = {}
+        for net_name,stats in psutil.net_if_stats().items():
+            if type(stats) is tuple or not stats.isup:
+                continue
+            rs[net_name] = stats.speed
+        return rs
+    def __snapshoot():
+        rs = {}
+        for net_name,stats in psutil.net_io_counters(pernic=True).items():
+            rs[net_name] = stats.bytes_recv
+        return rs
+     
+    if __name__=='__main__':
+        nets = __check_speeds()
+        while True:
+            print ('###########################')
+            snap_prev = __snapshoot()
+            time.sleep(1)
+            snap_now = __snapshoot()
+            for net_name,speed in nets.items():
+                recv_prev = snap_prev[net_name]
+                recv_now = snap_now[net_name]
+                rate = (recv_now-recv_prev)/(speed*1024*1024/8.)
+                print ('name:%s,rate:%.2f%%' % (net_name,rate*100))
+                
+
+--具体信息-例子：
+    #!/usr/bin/env python
+    #coding:utf-8
+
+    import psutil
+    import datetime
+    import time
+
+    # 当前时间
+    now_time = time.strftime('%Y-%m-%d-%H:%M:%S', time.localtime(time.time()))
+    print(now_time)
+
+    # 查看cpu物理个数的信息
+    print(u"物理CPU个数: %s" % psutil.cpu_count(logical=False))
+
+    #CPU的使用率
+    cpu = (str(psutil.cpu_percent(1))) + '%'
+    print(u"cup使用率: %s" % cpu)
+
+    #查看内存信息,剩余内存.free  总共.total
+    #round()函数方法为返回浮点数x的四舍五入值。
+
+    free = str(round(psutil.virtual_memory().free / (1024.0 * 1024.0 * 1024.0), 2))
+    total = str(round(psutil.virtual_memory().total / (1024.0 * 1024.0 * 1024.0), 2))
+    memory = int(psutil.virtual_memory().total - psutil.virtual_memory().free) / float(psutil.virtual_memory().total)
+    print(u"物理内存： %s G" % total)
+    print(u"剩余物理内存： %s G" % free)
+    print(u"物理内存使用率： %s %%" % int(memory * 100))
+    # 系统启动时间
+    print(u"系统启动时间: %s" % datetime.datetime.fromtimestamp(psutil.boot_time()).strftime("%Y-%m-%d %H:%M:%S"))
+
+    # 系统用户
+    users_count = len(psutil.users())
+    #
+    # >>> for u in psutil.users():
+    # ...   print(u)
+    # ...
+    # suser(name='root', terminal='pts/0', host='61.135.18.162', started=1505483904.0)
+    # suser(name='root', terminal='pts/5', host='61.135.18.162', started=1505469056.0)
+    # >>> u.name
+    # 'root'
+    # >>> u.terminal
+    # 'pts/5'
+    # >>> u.host
+    # '61.135.18.162'
+    # >>> u.started
+    # 1505469056.0
+    # >>>
+
+    users_list = ",".join([u.name for u in psutil.users()])
+    print(u"当前有%s个用户，分别是 %s" % (users_count, users_list))
+
+    #网卡，可以得到网卡属性，连接数，当前流量等信息
+    net = psutil.net_io_counters()
+    bytes_sent = '{0:.2f} Mb'.format(net.bytes_recv / 1024 / 1024)
+    bytes_rcvd = '{0:.2f} Mb'.format(net.bytes_sent / 1024 / 1024)
+    print(u"网卡接收流量 %s 网卡发送流量 %s" % (bytes_rcvd, bytes_sent))
+
+    io = psutil.disk_partitions()
+    # print(io)
+    # print("io[-1]为",io[-1])
+    #del io[-1]
+
+    print('-----------------------------磁盘信息---------------------------------------')
+
+    print("系统磁盘信息：" + str(io))
+
+    for i in io:
+        o = psutil.disk_usage(i.device)
+        print("总容量：" + str(int(o.total / (1024.0 * 1024.0 * 1024.0))) + "G")
+        print("已用容量：" + str(int(o.used / (1024.0 * 1024.0 * 1024.0))) + "G")
+        print("可用容量：" + str(int(o.free / (1024.0 * 1024.0 * 1024.0))) + "G")
+
+    print('-----------------------------进程信息-------------------------------------')
+    # 查看系统全部进程
+    print("进程名 \t\t\t  内存利用率 \t\t\t 进程状态 \t 创建时间 \t\t " )
+    for pnum in psutil.pids():
+        p = psutil.Process(pnum)
+        print(p.name(), end='\t\t')
+        print(p.memory_percent(), end='\t\t')
+        print(p.status(), end='\t\t')
+        print(p.create_time())

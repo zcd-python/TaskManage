@@ -1,0 +1,55 @@
+
+运维监视器（3种形式选一种：控制台程序、GUI程序、Web程序）
+    任务管理器：
+        （进程列表、结束进程、按名称查询）
+    资源管理器：
+        （分区选择、目录列举）
+        磁盘使用量
+        根据关键字查询路径（文件名或目录名）
+        根据关键字查询文件内容
+
+
+
+https://pypi.org/project/psutil/
+https://psutil.readthedocs.io/
+
+
+import psutil
+
+disk = psutil.disk_partitions()
+psutil.disk_usage(r'c:\\')
+
+
+import psutil
+
+for proc in psutil.process_iter():
+    print(proc.name(), proc.pid)
+
+
+https://pypi.org/project/prompt_toolkit/
+https://python-prompt-toolkit.readthedocs.io/
+
+
+https://docs.python.org/3/library/tkinter.html
+
+http://www.runoob.com/python/python-gui-tkinter.html
+
+
+http://docs.jinkan.org/docs/flask/
+
+http://amazeui.org/
+
+
+
+
+
+
+问答网站：
+
+https://stackoverflow.com/
+
+https://segmentfault.com
+
+https://www.v2ex.com
+
+https://bbs.csdn.net/
